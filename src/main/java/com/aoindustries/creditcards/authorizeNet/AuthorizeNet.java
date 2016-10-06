@@ -35,6 +35,7 @@ import com.aoindustries.creditcards.TransactionResult;
 import com.aoindustries.creditcards.VoidResult;
 import com.aoindustries.io.IoUtils;
 import com.aoindustries.lang.NotImplementedException;
+import com.aoindustries.nio.charset.Charsets;
 import com.aoindustries.util.StringUtility;
 import java.io.IOException;
 import java.io.InputStream;
@@ -44,7 +45,6 @@ import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -272,7 +272,7 @@ public class AuthorizeNet implements MerchantServicesProvider {
 				if(DEBUG_REQUEST) logger.log(Level.INFO, "Query: {0}", query);
 				// 2016-06-07: Converting from GET to POST per Authorize.Net requirements
 				//             http://stackoverflow.com/questions/4205980/java-sending-http-parameters-via-post-method-easily
-				byte[] postData = query.getBytes(StandardCharsets.UTF_8);
+				byte[] postData = query.getBytes(Charsets.UTF_8);
 				HttpURLConnection conn = (HttpURLConnection)new URL(PRODUCTION_URL).openConnection();
 				try {
 					conn.setRequestMethod("POST");
@@ -300,7 +300,7 @@ public class AuthorizeNet implements MerchantServicesProvider {
 					} finally {
 						in.close();
 					}
-					responseString = new String(responseBytes, StandardCharsets.UTF_8); // Assuming UTF-8, should we check response encoding?
+					responseString = new String(responseBytes, Charsets.UTF_8); // Assuming UTF-8, should we check response encoding?
 				} finally {
 					conn.disconnect();
 				}
