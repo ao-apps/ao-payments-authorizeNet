@@ -50,11 +50,11 @@ import junit.framework.TestSuite;
  *
  * @author  AO Industries, Inc.
  */
-public class AuthorizeNetTest extends TestCase {
+public class AuthorizeNetTestTODO extends TestCase {
 
 	private static Properties config;
 	synchronized private static String getConfig(String name) throws IOException {
-		if(config==null) config = PropertiesUtils.loadFromResource(AuthorizeNetTest.class, "AuthorizeNetTest.properties");
+		if(config==null) config = PropertiesUtils.loadFromResource(AuthorizeNetTestTODO.class, "AuthorizeNetTest.properties");
 		return config.getProperty(name);
 	}
 
@@ -64,7 +64,7 @@ public class AuthorizeNetTest extends TestCase {
 	private List<CreditCard> testGoodCreditCards;
 	private CreditCard testBadCreditCard;
 
-	public AuthorizeNetTest(String testName) {
+	public AuthorizeNetTestTODO(String testName) {
 		super(testName);
 	}
 
@@ -276,7 +276,7 @@ public class AuthorizeNetTest extends TestCase {
 	}
 
 	public static Test suite() {
-		TestSuite suite = new TestSuite(AuthorizeNetTest.class);
+		TestSuite suite = new TestSuite(AuthorizeNetTestTODO.class);
 		return suite;
 	}
 
