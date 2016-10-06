@@ -89,7 +89,7 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 		<dependency>
 			<groupId>com.aoindustries</groupId>
 			<artifactId>aocode-public</artifactId>
-			<version>1.7.0</version>
+			<version>1.8.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>
