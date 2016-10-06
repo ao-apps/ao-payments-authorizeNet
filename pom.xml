@@ -72,6 +72,11 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 
 	<dependencies>
 		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>commons-validator</groupId>
 			<artifactId>commons-validator</artifactId>
 			<version>1.5.1</version>
