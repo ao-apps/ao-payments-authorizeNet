@@ -1,5 +1,5 @@
 # [<img src="ao-logo.png" alt="AO Logo" width="35" height="40">](https://www.aoindustries.com/) [AO Credit Cards](https://www.aoindustries.com/ao-credit-cards/) / [Authorize.Net](https://www.aoindustries.com/ao-credit-cards/authorizeNet/)
-Provider for the Authorize.Net AIM system.
+Provider for the [Authorize.Net AIM system](https://www.authorize.net/).
 
 ## Project Links
 * [Project Home](https://www.aoindustries.com/ao-credit-cards/authorizeNet/)
