@@ -4,7 +4,7 @@ Provider for the [Authorize.Net AIM system](https://www.authorize.net/).
 ## Project Links
 * [Project Home](https://www.aoindustries.com/ao-credit-cards/authorizeNet/)
 * [API Docs](https://www.aoindustries.com/ao-credit-cards/authorizeNet/apidocs/)
-* [Maven Central Repository](https://search.maven.org/#search|gav|1|g:%22com.aoindustries%22%20AND%20a:%22ao-credit-cards-authorizeNet%22)
+* [Maven Central Repository](https://search.maven.org/#search%7Cgav%7C1%7Cg:%22com.aoindustries%22%20AND%20a:%22ao-credit-cards-authorizeNet%22)
 * [GitHub](https://github.com/aoindustries/ao-credit-cards-authorizeNet)
 
 ## Contact Us
