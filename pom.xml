@@ -42,7 +42,7 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 	</properties>
 
 	<name>AO Credit Cards Authorize.Net</name>
-	<url>${project.parent.url}authorizeNet/</url>
+	<url>https://www.aoindustries.com${bookPath}/</url><!-- Can't inherit due to multi-module -->
 	<description>Provider for the Authorize.Net AIM system.</description>
 	<inceptionYear>2010</inceptionYear>
 
