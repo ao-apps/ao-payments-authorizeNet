@@ -38,7 +38,7 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 		<core:child page="changelog.jspx" />
 		<core:child page="apidocs/index.jspx" />
 		<p>
-			@{description.html}
+			Provider for the <ao:a href="https://www.authorize.net/">Authorize.Net AIM system</ao:a>.
 		</p>
 		<section:section label="Project Links">
 			<ul>
