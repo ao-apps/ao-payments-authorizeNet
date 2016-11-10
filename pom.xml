@@ -36,13 +36,12 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 	<packaging>jar</packaging>
 
 	<properties>
-		<bookPath>/${project.parent.artifactId}/authorizeNet</bookPath>
 		<shortTitle>Authorize.Net</shortTitle>
 		<description.html><![CDATA[Provider for the <a target="_top" href="https://www.authorize.net/">Authorize.Net AIM system</a>.]]></description.html>
 	</properties>
 
 	<name>AO Credit Cards Authorize.Net</name>
-	<url>https://aoindustries.com${bookPath}/</url><!-- Can't inherit due to multi-module -->
+	<url>https://aoindustries.com/${project.parent.artifactId}/authorizeNet/</url>
 	<description>Provider for the Authorize.Net AIM system.</description>
 	<inceptionYear>2010</inceptionYear>
 
