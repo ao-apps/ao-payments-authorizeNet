@@ -26,8 +26,9 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 
 	<parent>
 		<groupId>com.aoindustries</groupId>
-		<artifactId>ao-credit-cards</artifactId>
-		<version>1.0.2-SNAPSHOT</version>
+		<artifactId>ao-oss-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../../ao-oss-parent/pom.xml</relativePath>
 	</parent>
 
 	<groupId>com.aoindustries</groupId>
@@ -36,12 +37,14 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 	<packaging>jar</packaging>
 
 	<properties>
+		<javadoc.breadcrumbs><![CDATA[<a target="_top" href="https://aoindustries.com/ao-credit-cards/">AO Credit Cards</a>
+/ <a target="_top" href="${project.url}">${shortTitle}</a>]]></javadoc.breadcrumbs>
 		<shortTitle>Authorize.Net</shortTitle>
 		<description.html><![CDATA[Provider for the <a target="_top" href="https://www.authorize.net/">Authorize.Net AIM system</a>.]]></description.html>
 	</properties>
 
 	<name>AO Credit Cards Authorize.Net</name>
-	<url>https://aoindustries.com/${project.parent.artifactId}/authorizeNet/</url>
+	<url>https://aoindustries.com/ao-credit-cards/authorizeNet/</url>
 	<description>Provider for the Authorize.Net AIM system.</description>
 	<inceptionYear>2010</inceptionYear>
 
