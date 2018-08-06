@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-ao-credit-cards-authorizeNet - Provider for the Authorize.Net AIM system.
+ao-credit-cards-authorizeNet - Provider for the Authorize.Net API.
 Copyright (C) 2016, 2017, 2018  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
@@ -36,12 +36,12 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 		<javadoc.breadcrumbs><![CDATA[<a target="_top" href="https://aoindustries.com/ao-credit-cards/">AO Credit Cards</a>
 / <a target="_top" href="${project.url}">${shortTitle}</a>]]></javadoc.breadcrumbs>
 		<shortTitle>Authorize.Net</shortTitle>
-		<description.html><![CDATA[Provider for the <a target="_top" href="https://www.authorize.net/">Authorize.Net AIM system</a>.]]></description.html>
+		<description.html><![CDATA[Provider for the <a target="_top" href="https://developer.authorize.net/api/reference/index.html">Authorize.Net API</a>.]]></description.html>
 	</properties>
 
 	<name>AO Credit Cards Authorize.Net</name>
 	<url>https://aoindustries.com/ao-credit-cards/authorizeNet/</url>
-	<description>Provider for the Authorize.Net AIM system.</description>
+	<description>Provider for the Authorize.Net API.</description>
 	<inceptionYear>2010</inceptionYear>
 
 	<scm>
