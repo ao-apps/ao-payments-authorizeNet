@@ -59,6 +59,9 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 						TODO: Changed implementation from <ao:a href="https://support.authorize.net/s/article/Advanced-Integration-Method-AIM">Advanced Integration Method (AIM)</ao:a>
 						to <ao:a href="https://developer.authorize.net/api/reference/index.html">Authorize.Net API</ao:a>.
 					</li>
+					<!-- TODO: Before next production release:
+					<li>Support stored cards.</li>
+					-->
 				</ul>
 			</changelog:release>
 		</c:if>
