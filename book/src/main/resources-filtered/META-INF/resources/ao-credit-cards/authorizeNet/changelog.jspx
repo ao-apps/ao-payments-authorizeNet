@@ -37,7 +37,7 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-29T18:16:34-0500"
-		dateModified="2018-08-05T19:28:08-0500"
+		dateModified="2019-04-24T02:03:48-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:ao-credit-cards-authorizeNet:pom.version}" />
@@ -54,8 +54,9 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 				scmUrl="@{documented.scm.url}"
 			>
 				<ul>
+					<li>Minimum Java version changed from 1.6 to 1.7.</li>
 					<li>
-						Changed implementation from <ao:a href="https://support.authorize.net/s/article/Advanced-Integration-Method-AIM">Advanced Integration Method (AIM)</ao:a>
+						TODO: Changed implementation from <ao:a href="https://support.authorize.net/s/article/Advanced-Integration-Method-AIM">Advanced Integration Method (AIM)</ao:a>
 						to <ao:a href="https://developer.authorize.net/api/reference/index.html">Authorize.Net API</ao:a>.
 					</li>
 				</ul>

@@ -1,6 +1,6 @@
 /*
  * ao-credit-cards - Credit card processing API supporting multiple payment gateways.
- * Copyright (C) 2010, 2011, 2012, 2013, 2015, 2016, 2018  AO Industries, Inc.
+ * Copyright (C) 2010, 2011, 2012, 2013, 2015, 2016, 2018, 2019  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -34,8 +34,6 @@ import com.aoindustries.creditcards.TransactionRequest;
 import com.aoindustries.creditcards.TransactionResult;
 import com.aoindustries.creditcards.VoidResult;
 import com.aoindustries.io.IoUtils;
-import com.aoindustries.lang.NotImplementedException;
-import com.aoindustries.nio.charset.Charsets;
 import com.aoindustries.util.StringUtility;
 import java.io.IOException;
 import java.io.InputStream;
@@ -45,6 +43,7 @@ import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -272,7 +271,7 @@ public class AuthorizeNet implements MerchantServicesProvider {
 				if(DEBUG_REQUEST) logger.log(Level.INFO, "Query: {0}", query);
 				// 2016-06-07: Converting from GET to POST per Authorize.Net requirements
 				//             http://stackoverflow.com/questions/4205980/java-sending-http-parameters-via-post-method-easily
-				byte[] postData = query.getBytes(Charsets.UTF_8);
+				byte[] postData = query.getBytes(StandardCharsets.UTF_8);
 				HttpURLConnection conn = (HttpURLConnection)new URL(PRODUCTION_URL).openConnection();
 				try {
 					conn.setRequestMethod("POST");
@@ -284,23 +283,17 @@ public class AuthorizeNet implements MerchantServicesProvider {
 					conn.setRequestProperty("Content-Length", Integer.toString(postData.length));
 					conn.setUseCaches(false);
 
-					// Write Request
-					OutputStream out = conn.getOutputStream();
-					try {
+					try ( // Write Request
+						OutputStream out = conn.getOutputStream()) {
 						out.write(postData);
-					} finally {
-						out.close();
 					}
 
 					// Read response
 					byte[] responseBytes;
-					InputStream in = conn.getInputStream();
-					try {
+					try (InputStream in = conn.getInputStream()) {
 						responseBytes = IoUtils.readFully(in);
-					} finally {
-						in.close();
 					}
-					responseString = new String(responseBytes, Charsets.UTF_8); // Assuming UTF-8, should we check response encoding?
+					responseString = new String(responseBytes, StandardCharsets.UTF_8); // Assuming UTF-8, should we check response encoding?
 				} finally {
 					conn.disconnect();
 				}
@@ -734,18 +727,21 @@ public class AuthorizeNet implements MerchantServicesProvider {
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	public CaptureResult capture(AuthorizationResult authorizationResult) {
-		throw new NotImplementedException();
+		throw new com.aoindustries.lang.NotImplementedException();
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	public VoidResult voidTransaction(Transaction transaction) {
-		throw new NotImplementedException();
+		throw new com.aoindustries.lang.NotImplementedException();
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	public CreditResult credit(TransactionRequest transactionRequest, CreditCard creditCard) {
-		throw new NotImplementedException();
+		throw new com.aoindustries.lang.NotImplementedException();
 	}
 
 	@Override
@@ -754,16 +750,19 @@ public class AuthorizeNet implements MerchantServicesProvider {
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	public String storeCreditCard(CreditCard creditCard) throws IOException {
-		throw new NotImplementedException();
+		throw new com.aoindustries.lang.NotImplementedException();
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	public void updateCreditCard(CreditCard creditCard) throws IOException {
-		throw new NotImplementedException();
+		throw new com.aoindustries.lang.NotImplementedException();
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	public void updateCreditCardNumberAndExpiration(
 		CreditCard creditCard,
 		String cardNumber,
@@ -771,20 +770,22 @@ public class AuthorizeNet implements MerchantServicesProvider {
 		short expirationYear,
 		String cardCode
 	) throws IOException {
-		throw new NotImplementedException();
+		throw new com.aoindustries.lang.NotImplementedException();
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	public void updateCreditCardExpiration(
 		CreditCard creditCard,
 		byte expirationMonth,
 		short expirationYear
 	) throws IOException {
-		throw new NotImplementedException();
+		throw new com.aoindustries.lang.NotImplementedException();
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	public void deleteCreditCard(CreditCard creditCard) throws IOException {
-		throw new NotImplementedException();
+		throw new com.aoindustries.lang.NotImplementedException();
 	}
 }
