@@ -238,6 +238,8 @@ public class AuthorizeNet implements MerchantServicesProvider {
 				null,
 				null,
 				null,
+				null,
+				null,
 				null
 			);
 		} catch(Throwable err) {
@@ -247,6 +249,8 @@ public class AuthorizeNet implements MerchantServicesProvider {
 				TransactionResult.ErrorCode.UNKNOWN.name(),
 				TransactionResult.ErrorCode.UNKNOWN,
 				err.getMessage(),
+				null,
+				null,
 				null,
 				null,
 				null,
@@ -332,6 +336,8 @@ public class AuthorizeNet implements MerchantServicesProvider {
 				null,
 				null,
 				null,
+				null,
+				null,
 				null
 			);
 		}
@@ -387,6 +393,8 @@ public class AuthorizeNet implements MerchantServicesProvider {
 				null,
 				null,
 				transactionId,
+				null,
+				null,
 				responseReasonCode,
 				AuthorizationResult.ApprovalResult.APPROVED,
 				null,
@@ -470,6 +478,8 @@ public class AuthorizeNet implements MerchantServicesProvider {
 				null,
 				null,
 				transactionId,
+				null,
+				null,
 				responseReasonCode,
 				AuthorizationResult.ApprovalResult.DECLINED,
 				responseReasonText,
@@ -497,6 +507,8 @@ public class AuthorizeNet implements MerchantServicesProvider {
 				null,
 				null,
 				transactionId,
+				null,
+				null,
 				responseReasonCode,
 				AuthorizationResult.ApprovalResult.HOLD,
 				null,
@@ -690,6 +702,8 @@ public class AuthorizeNet implements MerchantServicesProvider {
 				errorCode,
 				responseReasonText,
 				transactionId,
+				null,
+				null,
 				null,
 				null,
 				null,
