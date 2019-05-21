@@ -178,7 +178,7 @@ public class AuthorizeNet implements MerchantServicesProvider {
 			addField(querySB, "x_method", "CC");
 			addField(querySB, "x_amount", getAmount(transactionRequest));
 			addField(querySB, "x_card_num", CreditCard.numbersOnly(creditCard.getCardNumber()));
-			addField(querySB, "x_exp_date", creditCard.getExpirationDateMMYY());
+			addField(querySB, "x_exp_date", creditCard.getExpirationDateMMYY(false));
 			addField(querySB, "x_card_code", creditCard.getCardCode());
 			if(transactionRequest.getTestMode()) addField(querySB, "x_test_request", "TRUE");
 			addField(querySB, "x_duplicate_window", transactionRequest.getDuplicateWindow());
@@ -240,6 +240,9 @@ public class AuthorizeNet implements MerchantServicesProvider {
 				null,
 				null,
 				null,
+				null,
+				null,
+				null,
 				null
 			);
 		} catch(Throwable err) {
@@ -249,6 +252,9 @@ public class AuthorizeNet implements MerchantServicesProvider {
 				TransactionResult.ErrorCode.UNKNOWN.name(),
 				TransactionResult.ErrorCode.UNKNOWN,
 				err.getMessage(),
+				null,
+				null,
+				null,
 				null,
 				null,
 				null,
@@ -338,6 +344,9 @@ public class AuthorizeNet implements MerchantServicesProvider {
 				null,
 				null,
 				null,
+				null,
+				null,
+				null,
 				null
 			);
 		}
@@ -393,6 +402,9 @@ public class AuthorizeNet implements MerchantServicesProvider {
 				null,
 				null,
 				transactionId,
+				null,
+				null,
+				null,
 				null,
 				null,
 				responseReasonCode,
@@ -480,6 +492,9 @@ public class AuthorizeNet implements MerchantServicesProvider {
 				transactionId,
 				null,
 				null,
+				null,
+				null,
+				null,
 				responseReasonCode,
 				AuthorizationResult.ApprovalResult.DECLINED,
 				responseReasonText,
@@ -507,6 +522,9 @@ public class AuthorizeNet implements MerchantServicesProvider {
 				null,
 				null,
 				transactionId,
+				null,
+				null,
+				null,
 				null,
 				null,
 				responseReasonCode,
@@ -702,6 +720,9 @@ public class AuthorizeNet implements MerchantServicesProvider {
 				errorCode,
 				responseReasonText,
 				transactionId,
+				null,
+				null,
+				null,
 				null,
 				null,
 				null,
