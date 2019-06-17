@@ -21,7 +21,7 @@
 	</a>
 </p>
 
-Provider for the [Authorize.Net API](https://developer.authorize.net/api/reference/index.html).
+Provider for the [Authorize.Net AIM system](https://www.authorize.net/).
 
 ## Project Links
 * [Project Home](https://aoindustries.com/ao-credit-cards/authorizeNet/)

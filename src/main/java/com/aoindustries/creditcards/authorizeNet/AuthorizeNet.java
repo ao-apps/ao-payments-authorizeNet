@@ -51,7 +51,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Provider for the <a href="https://developer.authorize.net/api/reference/index.html">Authorize.Net API</a><br>
+ * Provider for the <a href="https://www.authorize.net/">Authorize.Net AIM system</a><br>
  * <br>
  * Configuration parameters:
  * <ol>

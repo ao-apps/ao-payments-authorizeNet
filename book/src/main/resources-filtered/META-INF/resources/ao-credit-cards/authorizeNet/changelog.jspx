@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-ao-credit-cards-authorizeNet - Provider for the Authorize.Net API.
+ao-credit-cards-authorizeNet - Provider for the Authorize.Net AIM system.
 Copyright (C) 2016, 2017, 2018, 2019  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
@@ -36,7 +36,7 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-29T18:16:34-0500"
-		dateModified="2019-06-03T14:53:35-0500"
+		dateModified="2019-06-17T07:46:01-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:ao-credit-cards-authorizeNet:pom.version}" />
@@ -54,10 +54,6 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 			>
 				<ul>
 					<li>Minimum Java version changed from 1.6 to 1.7.</li>
-					<li>
-						TODO: Changed implementation from <ao:a href="https://support.authorize.net/s/article/Advanced-Integration-Method-AIM">Advanced Integration Method (AIM)</ao:a>
-						to <ao:a href="https://developer.authorize.net/api/reference/index.html">Authorize.Net API</ao:a>.
-					</li>
 					<li>Using managed dependencies:
 						<ol>
 							<li>This project uses transitive managed dependencies.</li>
@@ -65,7 +61,12 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 						</ol>
 					</li>
 					<li>Please note: the next major release of this project will be renamed to <code>ao-payment-authorizeNet</code>.</li>
-					<!-- TODO: Before next production release:
+					<!-- TODO: Future:
+					<li>
+						TODO: Changed implementation from <ao:a href="https://support.authorize.net/s/article/Advanced-Integration-Method-AIM">Advanced Integration Method (AIM)</ao:a>
+						to <ao:a href="https://developer.authorize.net/api/reference/index.html">Authorize.Net API</ao:a>.
+						TODO: Rather than change implementation, should we create a separate provider instead?
+					</li>
 					<li>Support stored cards.</li>
 					-->
 				</ul>
