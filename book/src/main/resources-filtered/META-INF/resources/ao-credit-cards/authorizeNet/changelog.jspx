@@ -36,7 +36,7 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-29T18:16:34-0500"
-		dateModified="2019-06-19T09:48:11-0500"
+		dateModified="2019-06-21T00:07:23-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:ao-credit-cards-authorizeNet:pom.version}" />
@@ -52,26 +52,38 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 				artifactId="@{documented.artifactId}"
 				scmUrl="@{documented.scm.url}"
 			>
+				<!-- TODO: Future:
 				<ul>
-					<li>Minimum Java version changed from 1.6 to 1.7.</li>
-					<li>Using managed dependencies:
-						<ol>
-							<li>This project uses managed dependencies.</li>
-							<li>This project's managed dependencies may also be imported by other projects.</li>
-						</ol>
-					</li>
-					<li>Please note: the next major release of this project will be renamed to <code>ao-payment-authorizeNet</code>.</li>
-					<!-- TODO: Future:
 					<li>
 						TODO: Changed implementation from <ao:a href="https://support.authorize.net/s/article/Advanced-Integration-Method-AIM">Advanced Integration Method (AIM)</ao:a>
 						to <ao:a href="https://developer.authorize.net/api/reference/index.html">Authorize.Net API</ao:a>.
 						TODO: Rather than change implementation, should we create a separate provider instead?
 					</li>
 					<li>Support stored cards.</li>
-					-->
 				</ul>
+				-->
 			</changelog:release>
 		</c:if>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="1.1.0"
+			datePublished="2019-06-21T00:07:23-0500"
+			groupId="@{documented.groupId}"
+			artifactId="@{documented.artifactId}"
+			scmUrl="@{documented.scm.url}"
+		>
+			<ul>
+				<li>Minimum Java version changed from 1.6 to 1.7.</li>
+				<li>Using managed dependencies:
+					<ol>
+						<li>This project uses managed dependencies.</li>
+						<li>This project's managed dependencies may also be imported by other projects.</li>
+					</ol>
+				</li>
+				<li>Please note: the next major release of this project will be renamed to <code>ao-payment-authorizeNet</code>.</li>
+			</ul>
+		</changelog:release>
 
 		<changelog:release
 			projectName="@{documented.name}"
