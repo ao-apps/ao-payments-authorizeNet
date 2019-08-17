@@ -44,6 +44,7 @@ import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
@@ -73,6 +74,9 @@ public class AuthorizeNet implements MerchantServicesProvider {
 
 	private static final String PRODUCTION_URL = "https://secure.authorize.net/gateway/transact.dll";
 	// private static final String DEV_URL = "https://test.authorize.net/gateway/transact.dll";
+
+	// Assuming UTF-8, should we check response encoding?
+	private static final Charset ENCODING = StandardCharsets.UTF_8;
 
 	private final String providerId;
 	private final String x_login;
@@ -144,7 +148,7 @@ public class AuthorizeNet implements MerchantServicesProvider {
 	private static void addField(StringBuilder query, String name, String value) throws UnsupportedEncodingException {
 		if(value!=null && (value = stripDelimiters(value).trim()).length()>0) {
 			if(query.length()>0) query.append('&');
-			query.append(URLEncoder.encode(name, "UTF-8")).append('=').append(URLEncoder.encode(value, "UTF-8"));
+			query.append(URLEncoder.encode(name, ENCODING.name())).append('=').append(URLEncoder.encode(value, ENCODING.name()));
 		}
 	}
 
@@ -173,8 +177,8 @@ public class AuthorizeNet implements MerchantServicesProvider {
 			addField(querySB, "x_version", "3.1");
 			addField(querySB, "x_relay_response", "FALSE");
 			addField(querySB, "x_delim_data", "TRUE");
-			querySB.append('&').append(URLEncoder.encode("x_delim_char", "UTF-8")).append('=').append(URLEncoder.encode(Character.toString(X_DELIM_CHAR), "UTF-8"));
-			querySB.append('&').append(URLEncoder.encode("x_encap_char", "UTF-8")).append('=').append(URLEncoder.encode(Character.toString(X_ENCAP_CHAR), "UTF-8"));
+			querySB.append('&').append(URLEncoder.encode("x_delim_char", ENCODING.name())).append('=').append(URLEncoder.encode(Character.toString(X_DELIM_CHAR), ENCODING.name()));
+			querySB.append('&').append(URLEncoder.encode("x_encap_char", ENCODING.name())).append('=').append(URLEncoder.encode(Character.toString(X_ENCAP_CHAR), ENCODING.name()));
 			// Transaction Information
 			addField(querySB, "x_type", x_type);
 			addField(querySB, "x_method", "CC");
@@ -243,7 +247,7 @@ public class AuthorizeNet implements MerchantServicesProvider {
 				null,
 				null
 			);
-		} catch(Throwable err) {
+		} catch(RuntimeException | UnsupportedEncodingException err) {
 			return new AuthorizationResult(
 				getProviderId(),
 				TransactionResult.CommunicationResult.LOCAL_ERROR,
@@ -275,7 +279,7 @@ public class AuthorizeNet implements MerchantServicesProvider {
 				if(DEBUG_REQUEST) logger.log(Level.INFO, "Query: {0}", query);
 				// 2016-06-07: Converting from GET to POST per Authorize.Net requirements
 				//             http://stackoverflow.com/questions/4205980/java-sending-http-parameters-via-post-method-easily
-				byte[] postData = query.getBytes(StandardCharsets.UTF_8);
+				byte[] postData = query.getBytes(ENCODING);
 				HttpURLConnection conn = (HttpURLConnection)new URL(PRODUCTION_URL).openConnection();
 				try {
 					conn.setRequestMethod("POST");
@@ -283,7 +287,7 @@ public class AuthorizeNet implements MerchantServicesProvider {
 					conn.setDoInput(true);
 					conn.setInstanceFollowRedirects(false);
 					conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-					conn.setRequestProperty("charset", "utf-8");
+					conn.setRequestProperty("charset", ENCODING.name());
 					conn.setRequestProperty("Content-Length", Integer.toString(postData.length));
 					conn.setUseCaches(false);
 
@@ -297,7 +301,7 @@ public class AuthorizeNet implements MerchantServicesProvider {
 					try (InputStream in = conn.getInputStream()) {
 						responseBytes = IoUtils.readFully(in);
 					}
-					responseString = new String(responseBytes, StandardCharsets.UTF_8); // Assuming UTF-8, should we check response encoding?
+					responseString = new String(responseBytes, ENCODING);
 				} finally {
 					conn.disconnect();
 				}
