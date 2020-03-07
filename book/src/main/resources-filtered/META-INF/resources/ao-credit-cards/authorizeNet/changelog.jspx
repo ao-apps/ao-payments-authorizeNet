@@ -37,7 +37,7 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-29T18:16:34-0500"
-		dateModified="2019-11-03T02:12:52-0600"
+		dateModified="2020-03-07T06:01:29-0600"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:ao-credit-cards-authorizeNet:pom.version}" />
@@ -49,9 +49,9 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 			<changelog:release
 				projectName="@{documented.name}"
 				version="#{version}"
-				groupId="@{documented.groupId}"
+				groupId="@{project.groupId}"
 				artifactId="@{documented.artifactId}"
-				scmUrl="@{documented.scm.url}"
+				scmUrl="@{project.scm.url}"
 			>
 				<!-- TODO: Future:
 				<ul>
@@ -65,6 +65,10 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 				-->
 				<ul>
 					<li>Minimum Java version changed from 1.7 to 1.8.</li>
+					<li>
+						Reduced use of property substitutions in <code>pom.xml</code>.
+						This is to help 3rd-party parsers that fail to perform full Maven-compatible substitutions.
+					</li>
 				</ul>
 			</changelog:release>
 		</c:if>
@@ -73,9 +77,9 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 			projectName="@{documented.name}"
 			version="1.1.1"
 			datePublished="2019-10-05T17:41:00-0500"
-			groupId="@{documented.groupId}"
+			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
-			scmUrl="@{documented.scm.url}"
+			scmUrl="@{project.scm.url}"
 		>
 			<ul>
 				<li>Using <code>java.nio.charset.StandardCharsets</code> instead of <code>"UTF-8"</code>.</li>
@@ -86,9 +90,9 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 			projectName="@{documented.name}"
 			version="1.1.0"
 			datePublished="2019-06-21T00:07:23-0500"
-			groupId="@{documented.groupId}"
+			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
-			scmUrl="@{documented.scm.url}"
+			scmUrl="@{project.scm.url}"
 		>
 			<ul>
 				<li>Minimum Java version changed from 1.6 to 1.7.</li>
@@ -106,9 +110,9 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 			projectName="@{documented.name}"
 			version="1.0.3"
 			datePublished="2017-07-20T00:49:36-0500"
-			groupId="@{documented.groupId}"
+			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
-			scmUrl="@{documented.scm.url}"
+			scmUrl="@{project.scm.url}"
 		>
 			<ul>
 				<li>Updated dependencies.</li>
@@ -119,9 +123,9 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 			projectName="@{documented.name}"
 			version="1.0.2"
 			datePublished="2016-11-15T22:38:01-0600"
-			groupId="@{documented.groupId}"
+			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
-			scmUrl="@{documented.scm.url}"
+			scmUrl="@{project.scm.url}"
 		>
 			<ul>
 				<li>New <core:link book="/ao-oss-parent" page="/index.jspx" /> POM to simplify <code>pom.xml</code> files.</li>
@@ -134,9 +138,9 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 			projectName="@{documented.name}"
 			version="1.0.1"
 			datePublished="2016-10-20T18:22:00-0500"
-			groupId="@{documented.groupId}"
+			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
-			scmUrl="@{documented.scm.url}"
+			scmUrl="@{project.scm.url}"
 		>
 			<ul>
 				<li>Improved Javadoc formatting.</li>
@@ -148,9 +152,9 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 			projectName="@{documented.name}"
 			version="1.0.0"
 			datePublished="2016-10-06T12:36:00-0500"
-			groupId="@{documented.groupId}"
+			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
-			scmUrl="@{documented.scm.url}"
+			scmUrl="@{project.scm.url}"
 		>
 			<ul>
 				<li>Project moved to GitHub and Maven.</li>
