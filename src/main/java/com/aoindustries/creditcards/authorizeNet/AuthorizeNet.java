@@ -35,7 +35,7 @@ import com.aoindustries.creditcards.TransactionRequest;
 import com.aoindustries.creditcards.TransactionResult;
 import com.aoindustries.creditcards.VoidResult;
 import com.aoindustries.io.IoUtils;
-import com.aoindustries.util.StringUtility;
+import com.aoindustries.lang.Strings;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -310,7 +310,7 @@ public class AuthorizeNet implements MerchantServicesProvider {
 			// Parse response
 			if(DEBUG_RESPONSE) logger.log(Level.INFO, "Response: {0}", responseString);
 
-			response = StringUtility.splitString(responseString, X_DELIM_CHAR);
+			response = Strings.splitString(responseString, X_DELIM_CHAR);
 			if(response.size()<68) throw new Exception("Not enough fields in response");
 			for(int i=0; i<response.size(); i++) {
 				// Must start and end with encap_char
