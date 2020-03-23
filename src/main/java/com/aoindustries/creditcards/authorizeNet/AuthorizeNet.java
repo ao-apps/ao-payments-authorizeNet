@@ -57,7 +57,7 @@ import java.util.logging.Logger;
  * Configuration parameters:
  * <ol>
  *   <li>x_login - The merchant's unique API Login ID</li>
- *   <li>x_tran_key - The merchant's unique Transaction Key</code>
+ *   <li>x_tran_key - The merchant's unique Transaction Key</li>
  * </ol>
  *
  * @author  AO Industries, Inc.
