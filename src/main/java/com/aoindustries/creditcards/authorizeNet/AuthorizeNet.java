@@ -50,6 +50,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.apache.commons.lang3.NotImplementedException;
 
 /**
  * Provider for the <a href="https://www.authorize.net/">Authorize.Net AIM system</a><br>
@@ -740,21 +741,18 @@ public class AuthorizeNet implements MerchantServicesProvider {
 	}
 
 	@Override
-	@SuppressWarnings("deprecation")
 	public CaptureResult capture(AuthorizationResult authorizationResult) {
-		throw new com.aoindustries.exception.NotImplementedException();
+		throw new NotImplementedException("TODO");
 	}
 
 	@Override
-	@SuppressWarnings("deprecation")
 	public VoidResult voidTransaction(Transaction transaction) {
-		throw new com.aoindustries.exception.NotImplementedException();
+		throw new NotImplementedException("TODO");
 	}
 
 	@Override
-	@SuppressWarnings("deprecation")
 	public CreditResult credit(TransactionRequest transactionRequest, CreditCard creditCard) {
-		throw new com.aoindustries.exception.NotImplementedException();
+		throw new NotImplementedException("TODO");
 	}
 
 	@Override
