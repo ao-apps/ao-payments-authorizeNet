@@ -38,7 +38,7 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 		<shortTitle>Authorize.Net</shortTitle>
 		<description.html><![CDATA[Provider for the <a target="_top" href="https://www.authorize.net/">Authorize.Net AIM system</a>.]]></description.html>
 		<!-- Dependencies -->
-		<org.apache.commons.commons-lang3.version>3.9</org.apache.commons.commons-lang3.version>
+		<org.apache.commons.commons-lang3.version>3.10</org.apache.commons.commons-lang3.version>
 	</properties>
 
 	<name>AO Credit Cards Authorize.Net</name>
