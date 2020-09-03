@@ -1,6 +1,6 @@
 /*
  * ao-credit-cards-authorizeNet - Provider for the Authorize.Net AIM system.
- * Copyright (C) 2010, 2011, 2012, 2013, 2016, 2019  AO Industries, Inc.
+ * Copyright (C) 2010, 2011, 2012, 2013, 2016, 2019, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -89,8 +89,9 @@ public class AuthorizeNetTestTODO extends TestCase {
 				return getName().hashCode();
 			}
 			@Override
-			public boolean equals(Object O) {
-				return super.equals(O);
+			@SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
+			public boolean equals(Object obj) {
+				return super.equals(obj);
 			}
 			@Override
 			public String toString() {
