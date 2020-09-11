@@ -248,13 +248,15 @@ public class AuthorizeNet implements MerchantServicesProvider {
 				null,
 				null
 			);
-		} catch(RuntimeException | UnsupportedEncodingException err) {
+		} catch(ThreadDeath td) {
+			throw td;
+		} catch(Throwable t) {
 			return new AuthorizationResult(
 				getProviderId(),
 				TransactionResult.CommunicationResult.LOCAL_ERROR,
 				TransactionResult.ErrorCode.UNKNOWN.name(),
 				TransactionResult.ErrorCode.UNKNOWN,
-				err.getMessage(),
+				t.getMessage(),
 				null,
 				null,
 				null,
