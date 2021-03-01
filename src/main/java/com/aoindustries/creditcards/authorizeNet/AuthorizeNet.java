@@ -1,6 +1,6 @@
 /*
  * ao-credit-cards-authorizeNet - Provider for the Authorize.Net AIM system.
- * Copyright (C) 2010, 2011, 2012, 2013, 2015, 2016, 2018, 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2010, 2011, 2012, 2013, 2015, 2016, 2018, 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -34,6 +34,7 @@ import com.aoindustries.creditcards.Transaction;
 import com.aoindustries.creditcards.TransactionRequest;
 import com.aoindustries.creditcards.TransactionResult;
 import com.aoindustries.creditcards.VoidResult;
+import com.aoindustries.io.ContentType;
 import com.aoindustries.io.IoUtils;
 import com.aoindustries.lang.Strings;
 import java.io.InputStream;
@@ -289,7 +290,7 @@ public class AuthorizeNet implements MerchantServicesProvider {
 					conn.setDoOutput(true);
 					conn.setDoInput(true);
 					conn.setInstanceFollowRedirects(false);
-					conn.setRequestProperty("content-type", "application/x-www-form-urlencoded");
+					conn.setRequestProperty("content-type", ContentType.X_WWW_FORM_URLENCODED);
 					conn.setRequestProperty("charset", ENCODING.name());
 					conn.setRequestProperty("content-length", Integer.toString(postData.length));
 					conn.setUseCaches(false);
