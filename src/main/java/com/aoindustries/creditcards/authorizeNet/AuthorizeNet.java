@@ -804,7 +804,7 @@ public class AuthorizeNet implements MerchantServicesProvider {
 	}
 
 	@Override
-	public Map<String, TokenizedCreditCard> getTokenizedCreditCards(Map<String,CreditCard> persistedCards, PrintWriter verboseOut, PrintWriter infoOut, PrintWriter warningOut) throws UnsupportedOperationException {
+	public Map<String, TokenizedCreditCard> getTokenizedCreditCards(Map<String, CreditCard> persistedCards, PrintWriter verboseOut, PrintWriter infoOut, PrintWriter warningOut) throws UnsupportedOperationException {
 		throw new UnsupportedOperationException();
 	}
 }
