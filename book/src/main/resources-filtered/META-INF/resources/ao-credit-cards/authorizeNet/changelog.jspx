@@ -37,7 +37,7 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-29T18:16:34-05:00"
-		dateModified="2020-12-11T12:00:46-06:00"
+		dateModified="2021-05-25T18:54:28-05:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -47,16 +47,17 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 				artifactId="@{documented.artifactId}"
 				scmUrl="@{project.scm.url}"
 			>
-				<!-- TODO: Future:
 				<ul>
+					<li>Updated dependencies.</li>
+					<!-- TODO: Future:
 					<li>
 						TODO: Changed implementation from <ao:a href="https://support.authorize.net/s/article/Advanced-Integration-Method-AIM">Advanced Integration Method (AIM)</ao:a>
 						to <ao:a href="https://developer.authorize.net/api/reference/index.html">Authorize.Net API</ao:a>.
 						TODO: Rather than change implementation, should we create a separate provider instead?
 					</li>
 					<li>Support stored cards.</li>
+					-->
 				</ul>
-				-->
 			</changelog:release>
 		</c:if>
 
