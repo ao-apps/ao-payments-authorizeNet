@@ -40,7 +40,6 @@ import com.aoindustries.lang.Strings;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -147,18 +146,18 @@ public class AuthorizeNet implements MerchantServicesProvider {
 	/**
 	 * Adds a parameter if the value is not null or empty.  The value is trimmed.
 	 */
-	private static void addField(StringBuilder query, String name, String value) throws UnsupportedEncodingException {
+	private static void addField(StringBuilder query, String name, String value) {
 		if(value!=null && (value = stripDelimiters(value).trim()).length()>0) {
 			if(query.length()>0) query.append('&');
-			query.append(URLEncoder.encode(name, ENCODING.name())).append('=').append(URLEncoder.encode(value, ENCODING.name()));
+			query.append(URLEncoder.encode(name, ENCODING)).append('=').append(URLEncoder.encode(value, ENCODING));
 		}
 	}
 
-	private static void addField(StringBuilder query, String name, int value) throws UnsupportedEncodingException {
+	private static void addField(StringBuilder query, String name, int value) {
 		addField(query, name, Integer.toString(value));
 	}
 
-	private static void addField(StringBuilder query, String name, BigDecimal value) throws UnsupportedEncodingException {
+	private static void addField(StringBuilder query, String name, BigDecimal value) {
 		if(value!=null) addField(query, name, value.toPlainString());
 	}
 
@@ -179,8 +178,8 @@ public class AuthorizeNet implements MerchantServicesProvider {
 			addField(querySB, "x_version", "3.1");
 			addField(querySB, "x_relay_response", "FALSE");
 			addField(querySB, "x_delim_data", "TRUE");
-			querySB.append('&').append(URLEncoder.encode("x_delim_char", ENCODING.name())).append('=').append(URLEncoder.encode(Character.toString(X_DELIM_CHAR), ENCODING.name()));
-			querySB.append('&').append(URLEncoder.encode("x_encap_char", ENCODING.name())).append('=').append(URLEncoder.encode(Character.toString(X_ENCAP_CHAR), ENCODING.name()));
+			querySB.append('&').append(URLEncoder.encode("x_delim_char", ENCODING)).append('=').append(URLEncoder.encode(Character.toString(X_DELIM_CHAR), ENCODING));
+			querySB.append('&').append(URLEncoder.encode("x_encap_char", ENCODING)).append('=').append(URLEncoder.encode(Character.toString(X_ENCAP_CHAR), ENCODING));
 			// Transaction Information
 			addField(querySB, "x_type", x_type);
 			addField(querySB, "x_method", "CC");
