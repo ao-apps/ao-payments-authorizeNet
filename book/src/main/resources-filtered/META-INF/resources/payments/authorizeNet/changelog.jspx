@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-ao-credit-cards-authorizeNet - Provider for the Authorize.Net AIM system.
+ao-payments-authorizeNet - Provider for the Authorize.Net AIM system.
 Copyright (C) 2016, 2017, 2018, 2019, 2020, 2021  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
 
-This file is part of ao-credit-cards-authorizeNet.
+This file is part of ao-payments-authorizeNet.
 
-ao-credit-cards-authorizeNet is free software: you can redistribute it and/or modify
+ao-payments-authorizeNet is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-ao-credit-cards-authorizeNet is distributed in the hope that it will be useful,
+ao-payments-authorizeNet is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licenses />.
+along with ao-payments-authorizeNet.  If not, see <http://www.gnu.org/licenses />.
 -->
 <jsp:root
-	xmlns:ao="https://aoindustries.com/ao-taglib/"
+	xmlns:ao="https://oss.aoapps.com/taglib/"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:changelog="https://semanticcms.com/changelog/taglib/"
 	xmlns:core="https://semanticcms.com/core/taglib/"
@@ -37,7 +37,7 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-29T18:16:34-05:00"
-		dateModified="2021-05-26T06:36:49-05:00"
+		dateModified="2021-05-31T01:04:26-05:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -45,10 +45,12 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 				version="@{project.version}"
 				groupId="@{project.groupId}"
 				artifactId="@{documented.artifactId}"
+				repository="https://s01.oss.sonatype.org/content/repositories/snapshots/"
 				scmUrl="@{project.scm.url}"
 			>
 				<ul>
 					<li>Minimum Java version changed from 1.8 to 11.</li>
+					<li>Maven artifact relocated from <code>com.aoindustries:ao-credit-cards-authorizeNet</code> to <code>com.aoapps:ao-payments-authorizeNet</code>.</li>
 					<!-- TODO: Future:
 					<li>
 						TODO: Changed implementation from <ao:a href="https://support.authorize.net/s/article/Advanced-Integration-Method-AIM">Advanced Integration Method (AIM)</ao:a>
@@ -65,8 +67,8 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 			projectName="@{documented.name}"
 			version="1.3.0"
 			datePublished="2020-12-11T12:00:46-06:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
+			groupId="com.aoindustries"
+			artifactId="ao-credit-cards-authorizeNet"
 			scmUrl="@{project.scm.url}"
 		>
 			<ul>
@@ -78,8 +80,8 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 			projectName="@{documented.name}"
 			version="1.1.2"
 			datePublished="2020-03-28T04:08:59-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
+			groupId="com.aoindustries"
+			artifactId="ao-credit-cards-authorizeNet"
 			scmUrl="@{project.scm.url}"
 		>
 			<ul>
@@ -96,8 +98,8 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 			projectName="@{documented.name}"
 			version="1.1.1"
 			datePublished="2019-10-05T17:41:00-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
+			groupId="com.aoindustries"
+			artifactId="ao-credit-cards-authorizeNet"
 			scmUrl="@{project.scm.url}"
 		>
 			<ul>
@@ -109,8 +111,8 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 			projectName="@{documented.name}"
 			version="1.1.0"
 			datePublished="2019-06-21T00:07:23-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
+			groupId="com.aoindustries"
+			artifactId="ao-credit-cards-authorizeNet"
 			scmUrl="@{project.scm.url}"
 		>
 			<ul>
@@ -129,8 +131,8 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 			projectName="@{documented.name}"
 			version="1.0.3"
 			datePublished="2017-07-20T00:49:36-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
+			groupId="com.aoindustries"
+			artifactId="ao-credit-cards-authorizeNet"
 			scmUrl="@{project.scm.url}"
 		>
 			<ul>
@@ -142,12 +144,12 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 			projectName="@{documented.name}"
 			version="1.0.2"
 			datePublished="2016-11-15T22:38:01-06:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
+			groupId="com.aoindustries"
+			artifactId="ao-credit-cards-authorizeNet"
 			scmUrl="@{project.scm.url}"
 		>
 			<ul>
-				<li>New <core:link book="/ao-oss-parent" page="/index.jspx" /> POM to simplify <code>pom.xml</code> files.</li>
+				<li>New <core:link book="/parent" page="/index.jspx" /> POM to simplify <code>pom.xml</code> files.</li>
 				<li>Project documentation moved to per-project book in <ao:a href="https://semanticcms.com/">SemanticCMS</ao:a> format.</li>
 				<li>Added changelog as top-level project link.</li>
 			</ul>
@@ -157,8 +159,8 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 			projectName="@{documented.name}"
 			version="1.0.1"
 			datePublished="2016-10-20T18:22:00-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
+			groupId="com.aoindustries"
+			artifactId="ao-credit-cards-authorizeNet"
 			scmUrl="@{project.scm.url}"
 		>
 			<ul>
@@ -171,8 +173,8 @@ along with ao-credit-cards-authorizeNet.  If not, see <http://www.gnu.org/licens
 			projectName="@{documented.name}"
 			version="1.0.0"
 			datePublished="2016-10-06T12:36:00-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
+			groupId="com.aoindustries"
+			artifactId="ao-credit-cards-authorizeNet"
 			scmUrl="@{project.scm.url}"
 		>
 			<ul>
