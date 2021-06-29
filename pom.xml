@@ -33,6 +33,7 @@ along with ao-payments-authorizeNet.  If not, see <http://www.gnu.org/licenses /
 	<packaging>bundle</packaging>
 
 	<properties>
+		<module.name>com.aoapps.payments.authorizeNet</module.name>
 		<javadoc.breadcrumbs><![CDATA[<a target="${javadoc.target}" href="https://oss.aoapps.com/">AO OSS</a>
 / <a target="${javadoc.target}" href="https://oss.aoapps.com/payments/">Payments</a>
 / <a target="${javadoc.target}" href="${project.url}">Authorize.Net</a>]]></javadoc.breadcrumbs>
