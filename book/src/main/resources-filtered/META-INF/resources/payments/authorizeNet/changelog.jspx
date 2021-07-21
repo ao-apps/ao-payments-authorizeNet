@@ -37,7 +37,7 @@ along with ao-payments-authorizeNet.  If not, see <http://www.gnu.org/licenses /
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-29T18:16:34-05:00"
-		dateModified="2021-06-27T16:13:41-05:00"
+		dateModified="2021-07-21T04:15:55-05:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -49,10 +49,6 @@ along with ao-payments-authorizeNet.  If not, see <http://www.gnu.org/licenses /
 				scmUrl="@{project.scm.url}"
 			>
 				<ul>
-					<li>Minimum Java version changed from 1.8 to 11.</li>
-					<li>Now supports Java 9+ modules with included <code>module-info.class</code>.</li>
-					<li>Maven artifact relocated from <code>com.aoindustries:ao-credit-cards-authorizeNet</code> to <code>com.aoapps:ao-payments-authorizeNet</code>.</li>
-					<li>Package renamed from <code>com.aoindustries.creditcards.authorizeNet</code> to <code>com.aoapps.payments.authorizeNet</code>.</li>
 					<!-- TODO: Future:
 					<li>
 						TODO: Changed implementation from <ao:a href="https://support.authorize.net/s/article/Advanced-Integration-Method-AIM">Advanced Integration Method (AIM)</ao:a>
@@ -64,6 +60,22 @@ along with ao-payments-authorizeNet.  If not, see <http://www.gnu.org/licenses /
 				</ul>
 			</changelog:release>
 		</c:if>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="2.0.0"
+			datePublished="2021-07-21T04:15:55-05:00"
+			groupId="@{project.groupId}"
+			artifactId="@{documented.artifactId}"
+			scmUrl="@{project.scm.url}"
+		>
+			<ul>
+				<li>Minimum Java version changed from 1.8 to 11.</li>
+				<li>Now supports Java 9+ modules with included <code>module-info.class</code>.</li>
+				<li>Maven artifact relocated from <code>com.aoindustries:ao-credit-cards-authorizeNet</code> to <code>com.aoapps:ao-payments-authorizeNet</code>.</li>
+				<li>Package renamed from <code>com.aoindustries.creditcards.authorizeNet</code> to <code>com.aoapps.payments.authorizeNet</code>.</li>
+			</ul>
+		</changelog:release>
 
 		<changelog:release
 			projectName="@{documented.name}"
