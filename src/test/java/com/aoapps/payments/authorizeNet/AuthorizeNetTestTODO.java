@@ -53,7 +53,7 @@ import junit.framework.TestSuite;
 public class AuthorizeNetTestTODO extends TestCase {
 
 	private static Properties config;
-	synchronized private static String getConfig(String name) throws IOException {
+	private static synchronized String getConfig(String name) throws IOException {
 		if(config==null) config = PropertiesUtils.loadFromResource(AuthorizeNetTestTODO.class, "AuthorizeNetTest.properties");
 		return config.getProperty(name);
 	}
