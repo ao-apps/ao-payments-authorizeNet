@@ -132,15 +132,15 @@ public class AuthorizeNet implements MerchantServicesProvider {
 	 * Strips any delimiters from a string.
 	 */
 	private static String stripDelimiters(String value) {
-		if(value==null) return null;
+		if(value == null) return null;
 		int len = value.length();
-		if(len==0) return value;
-		StringBuilder SB = new StringBuilder(len);
-		for(int i=0; i<len; i++) {
+		if(len == 0) return value;
+		StringBuilder sb = new StringBuilder(len);
+		for(int i = 0; i < len; i++) {
 			char ch = value.charAt(i);
-			if(ch!=X_DELIM_CHAR && ch!=X_ENCAP_CHAR) SB.append(ch);
+			if(ch != X_DELIM_CHAR && ch != X_ENCAP_CHAR) sb.append(ch);
 		}
-		return SB.length()==len ? value : SB.toString();
+		return sb.length() == len ? value : sb.toString();
 	}
 
 	/**
