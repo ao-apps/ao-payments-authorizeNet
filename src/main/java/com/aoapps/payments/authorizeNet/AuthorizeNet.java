@@ -113,12 +113,12 @@ public class AuthorizeNet implements MerchantServicesProvider {
       }
       return line2.trim();
     } else {
-      line1=line1.trim();
+      line1 = line1.trim();
       if (line2 == null) {
         return line1;
       }
-      line2=line2.trim();
-      return (line1+" "+line2).trim();
+      line2 = line2.trim();
+      return (line1 + " " + line2).trim();
     }
   }
 
@@ -164,8 +164,8 @@ public class AuthorizeNet implements MerchantServicesProvider {
    * Adds a parameter if the value is not null or empty.  The value is trimmed.
    */
   private static void addField(StringBuilder query, String name, String value) {
-    if (value != null && (value = stripDelimiters(value).trim()).length()>0) {
-      if (query.length()>0) {
+    if (value != null && (value = stripDelimiters(value).trim()).length() > 0) {
+      if (query.length() > 0) {
         query.append('&');
       }
       query.append(URLEncoder.encode(name, ENCODING)).append('=').append(URLEncoder.encode(value, ENCODING));
@@ -254,47 +254,47 @@ public class AuthorizeNet implements MerchantServicesProvider {
       query = querySB.toString();
     } catch (ErrorCodeException err) {
       return new AuthorizationResult(
-        getProviderId(),
-        TransactionResult.CommunicationResult.LOCAL_ERROR,
-        err.getErrorCode().name(),
-        err.getErrorCode(),
-        err.getMessage(),
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+          getProviderId(),
+          TransactionResult.CommunicationResult.LOCAL_ERROR,
+          err.getErrorCode().name(),
+          err.getErrorCode(),
+          err.getMessage(),
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
       );
     } catch (ThreadDeath td) {
       throw td;
     } catch (Throwable t) {
       return new AuthorizationResult(
-        getProviderId(),
-        TransactionResult.CommunicationResult.LOCAL_ERROR,
-        TransactionResult.ErrorCode.UNKNOWN.name(),
-        TransactionResult.ErrorCode.UNKNOWN,
-        t.getMessage(),
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+          getProviderId(),
+          TransactionResult.CommunicationResult.LOCAL_ERROR,
+          TransactionResult.ErrorCode.UNKNOWN.name(),
+          TransactionResult.ErrorCode.UNKNOWN,
+          t.getMessage(),
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
       );
     }
 
@@ -310,7 +310,7 @@ public class AuthorizeNet implements MerchantServicesProvider {
         // 2016-06-07: Converting from GET to POST per Authorize.Net requirements
         //             http://stackoverflow.com/questions/4205980/java-sending-http-parameters-via-post-method-easily
         byte[] postData = query.getBytes(ENCODING);
-        HttpURLConnection conn = (HttpURLConnection)new URL(PRODUCTION_URL).openConnection();
+        HttpURLConnection conn = (HttpURLConnection) new URL(PRODUCTION_URL).openConnection();
         try {
           conn.setRequestMethod("POST");
           conn.setDoOutput(true);
@@ -343,54 +343,54 @@ public class AuthorizeNet implements MerchantServicesProvider {
       }
 
       response = Strings.split(responseString, X_DELIM_CHAR);
-      if (response.size()<68) {
+      if (response.size() < 68) {
         throw new Exception("Not enough fields in response");
       }
-      for (int i=0; i<response.size(); i++) {
+      for (int i = 0; i < response.size(); i++) {
         // Must start and end with encap_char
         String value = response.get(i);
         if (
-          value.length()<2
-          || !value.startsWith(Character.toString(X_ENCAP_CHAR))
-          || !value.endsWith(Character.toString(X_ENCAP_CHAR))
+            value.length() < 2
+                || !value.startsWith(Character.toString(X_ENCAP_CHAR))
+                || !value.endsWith(Character.toString(X_ENCAP_CHAR))
         ) {
           throw new Exception("Response value not encapsulated");
         }
-        response.set(i, value.substring(1, value.length()-1));
+        response.set(i, value.substring(1, value.length() - 1));
       }
     } catch (Exception err) {
       return new AuthorizationResult(
-        getProviderId(),
-        TransactionResult.CommunicationResult.GATEWAY_ERROR,
-        TransactionResult.ErrorCode.ERROR_TRY_AGAIN.name(),
-        TransactionResult.ErrorCode.ERROR_TRY_AGAIN,
-        err.getMessage(),
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+          getProviderId(),
+          TransactionResult.CommunicationResult.GATEWAY_ERROR,
+          TransactionResult.ErrorCode.ERROR_TRY_AGAIN.name(),
+          TransactionResult.ErrorCode.ERROR_TRY_AGAIN,
+          err.getMessage(),
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
       );
     }
 
     // Get the values from the response
     // Note: The docs are 1-based and arrays are 0-based, so these are all off by one
     final String
-      responseCode       = response.get(0),
-      responseReasonCode = response.get(2),
-      responseReasonText = response.get(3),
-      authorizationCode  = response.get(4),
-      avsResponse        = response.get(5),
-      transactionId      = response.get(6),
-      cardCodeResponse   = response.get(38)
+        responseCode       = response.get(0),
+        responseReasonCode = response.get(2),
+        responseReasonText = response.get(3),
+        authorizationCode  = response.get(4),
+        avsResponse        = response.get(5),
+        transactionId      = response.get(6),
+        cardCodeResponse   = response.get(38)
     ;
 
     // Convert to CvvResult
@@ -407,7 +407,7 @@ public class AuthorizeNet implements MerchantServicesProvider {
       cvvResult = AuthorizationResult.CvvResult.NOT_SUPPORTED_BY_ISSUER;
     } else {
       String cvv2 = creditCard.getCardCode();
-      if (cvv2 != null && cvv2.length()>0) {
+      if (cvv2 != null && cvv2.length() > 0) {
         cvvResult = AuthorizationResult.CvvResult.NOT_PROCESSED;
       } else {
         cvvResult = AuthorizationResult.CvvResult.CVV2_NOT_PROVIDED_BY_MERCHANT;
@@ -449,68 +449,68 @@ public class AuthorizeNet implements MerchantServicesProvider {
     if (responseCode.equals("1")) {
       // Approved
       return new AuthorizationResult(
-        getProviderId(),
-        TransactionResult.CommunicationResult.SUCCESS,
-        null,
-        null,
-        null,
-        transactionId,
-        null,
-        responseReasonCode,
-        AuthorizationResult.ApprovalResult.APPROVED,
-        null,
-        null,
-        null,
-        null,
-        cardCodeResponse,
-        cvvResult,
-        avsResponse,
-        avsResult,
-        authorizationCode
+          getProviderId(),
+          TransactionResult.CommunicationResult.SUCCESS,
+          null,
+          null,
+          null,
+          transactionId,
+          null,
+          responseReasonCode,
+          AuthorizationResult.ApprovalResult.APPROVED,
+          null,
+          null,
+          null,
+          null,
+          cardCodeResponse,
+          cvvResult,
+          avsResponse,
+          avsResult,
+          authorizationCode
       );
     } else if (
-      responseCode.equals("2")
-      // The following codes will be treated as an error
-      && !"28".equals(responseReasonCode)
-      && !"30".equals(responseReasonCode)
-      && !"31".equals(responseReasonCode)
-      && !"34".equals(responseReasonCode)
-      && !"35".equals(responseReasonCode)
-      && !"37".equals(responseReasonCode)
-      && !"38".equals(responseReasonCode)
-      && !"171".equals(responseReasonCode)
-      && !"172".equals(responseReasonCode)
-      && !"174".equals(responseReasonCode)
-      && !"200".equals(responseReasonCode)
-      && !"201".equals(responseReasonCode)
-      && !"202".equals(responseReasonCode)
-      && !"203".equals(responseReasonCode)
-      && !"204".equals(responseReasonCode)
-      && !"205".equals(responseReasonCode)
-      && !"206".equals(responseReasonCode)
-      && !"207".equals(responseReasonCode)
-      && !"208".equals(responseReasonCode)
-      && !"209".equals(responseReasonCode)
-      && !"210".equals(responseReasonCode)
-      && !"211".equals(responseReasonCode)
-      && !"212".equals(responseReasonCode)
-      && !"213".equals(responseReasonCode)
-      && !"214".equals(responseReasonCode)
-      && !"215".equals(responseReasonCode)
-      && !"216".equals(responseReasonCode)
-      && !"217".equals(responseReasonCode)
-      && !"218".equals(responseReasonCode)
-      && !"219".equals(responseReasonCode)
-      && !"220".equals(responseReasonCode)
-      && !"221".equals(responseReasonCode)
-      && !"222".equals(responseReasonCode)
-      && !"223".equals(responseReasonCode)
-      && !"224".equals(responseReasonCode)
-      && !"315".equals(responseReasonCode)
-      && !"316".equals(responseReasonCode)
-      && !"317".equals(responseReasonCode)
-      && !"318".equals(responseReasonCode)
-      && !"319".equals(responseReasonCode)
+        responseCode.equals("2")
+            // The following codes will be treated as an error
+            && !"28".equals(responseReasonCode)
+            && !"30".equals(responseReasonCode)
+            && !"31".equals(responseReasonCode)
+            && !"34".equals(responseReasonCode)
+            && !"35".equals(responseReasonCode)
+            && !"37".equals(responseReasonCode)
+            && !"38".equals(responseReasonCode)
+            && !"171".equals(responseReasonCode)
+            && !"172".equals(responseReasonCode)
+            && !"174".equals(responseReasonCode)
+            && !"200".equals(responseReasonCode)
+            && !"201".equals(responseReasonCode)
+            && !"202".equals(responseReasonCode)
+            && !"203".equals(responseReasonCode)
+            && !"204".equals(responseReasonCode)
+            && !"205".equals(responseReasonCode)
+            && !"206".equals(responseReasonCode)
+            && !"207".equals(responseReasonCode)
+            && !"208".equals(responseReasonCode)
+            && !"209".equals(responseReasonCode)
+            && !"210".equals(responseReasonCode)
+            && !"211".equals(responseReasonCode)
+            && !"212".equals(responseReasonCode)
+            && !"213".equals(responseReasonCode)
+            && !"214".equals(responseReasonCode)
+            && !"215".equals(responseReasonCode)
+            && !"216".equals(responseReasonCode)
+            && !"217".equals(responseReasonCode)
+            && !"218".equals(responseReasonCode)
+            && !"219".equals(responseReasonCode)
+            && !"220".equals(responseReasonCode)
+            && !"221".equals(responseReasonCode)
+            && !"222".equals(responseReasonCode)
+            && !"223".equals(responseReasonCode)
+            && !"224".equals(responseReasonCode)
+            && !"315".equals(responseReasonCode)
+            && !"316".equals(responseReasonCode)
+            && !"317".equals(responseReasonCode)
+            && !"318".equals(responseReasonCode)
+            && !"319".equals(responseReasonCode)
     ) {
       // Declined
       AuthorizationResult.DeclineReason declineReason;
@@ -551,24 +551,24 @@ public class AuthorizeNet implements MerchantServicesProvider {
       }
 
       return new AuthorizationResult(
-        getProviderId(),
-        TransactionResult.CommunicationResult.SUCCESS,
-        null,
-        null,
-        null,
-        transactionId,
-        null,
-        responseReasonCode,
-        AuthorizationResult.ApprovalResult.DECLINED,
-        responseReasonText,
-        declineReason,
-        null,
-        null,
-        cardCodeResponse,
-        cvvResult,
-        avsResponse,
-        avsResult,
-        authorizationCode
+          getProviderId(),
+          TransactionResult.CommunicationResult.SUCCESS,
+          null,
+          null,
+          null,
+          transactionId,
+          null,
+          responseReasonCode,
+          AuthorizationResult.ApprovalResult.DECLINED,
+          responseReasonText,
+          declineReason,
+          null,
+          null,
+          cardCodeResponse,
+          cvvResult,
+          avsResponse,
+          avsResult,
+          authorizationCode
       );
     } else if (responseCode.equals("4")) {
       // Hold
@@ -585,24 +585,24 @@ public class AuthorizeNet implements MerchantServicesProvider {
         reviewReason = AuthorizationResult.ReviewReason.RISK_MANAGEMENT;
       }
       return new AuthorizationResult(
-        getProviderId(),
-        TransactionResult.CommunicationResult.SUCCESS,
-        null,
-        null,
-        null,
-        transactionId,
-        null,
-        responseReasonCode,
-        AuthorizationResult.ApprovalResult.HOLD,
-        null,
-        null,
-        responseReasonText,
-        reviewReason,
-        cardCodeResponse,
-        cvvResult,
-        avsResponse,
-        avsResult,
-        authorizationCode
+          getProviderId(),
+          TransactionResult.CommunicationResult.SUCCESS,
+          null,
+          null,
+          null,
+          transactionId,
+          null,
+          responseReasonCode,
+          AuthorizationResult.ApprovalResult.HOLD,
+          null,
+          null,
+          responseReasonText,
+          reviewReason,
+          cardCodeResponse,
+          cvvResult,
+          avsResponse,
+          avsResult,
+          authorizationCode
       );
     } else {
       // Other results, assume error
@@ -689,7 +689,7 @@ public class AuthorizeNet implements MerchantServicesProvider {
         errorCode = TransactionResult.ErrorCode.DUPLICATE;
       } else if ("319".equals(responseReasonCode)) {
         errorCode = TransactionResult.ErrorCode.TRANSACTION_NOT_FOUND;
-      /*
+        /*
        * The following are errors (code 3)
        */
       } else if ("5".equals(responseReasonCode)) {
@@ -740,7 +740,7 @@ public class AuthorizeNet implements MerchantServicesProvider {
         errorCode = TransactionResult.ErrorCode.UNKNOWN;
       } else if ("33".equals(responseReasonCode)) {
         errorCode = TransactionResult.ErrorCode.UNKNOWN;
-      /*
+        /*
        * Could parse for separate fields if needed
        */
       } else if ("36".equals(responseReasonCode)) {
@@ -952,24 +952,24 @@ public class AuthorizeNet implements MerchantServicesProvider {
       }
 
       return new AuthorizationResult(
-        getProviderId(),
-        communicationResult,
-        responseReasonCode,
-        errorCode,
-        responseReasonText,
-        transactionId,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        cardCodeResponse,
-        cvvResult,
-        avsResponse,
-        avsResult,
-        authorizationCode
+          getProviderId(),
+          communicationResult,
+          responseReasonCode,
+          errorCode,
+          responseReasonText,
+          transactionId,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          cardCodeResponse,
+          cvvResult,
+          avsResponse,
+          avsResult,
+          authorizationCode
       );
     }
   }
@@ -978,15 +978,15 @@ public class AuthorizeNet implements MerchantServicesProvider {
   public SaleResult sale(TransactionRequest transactionRequest, CreditCard creditCard) {
     AuthorizationResult authorizationResult = authorizeOrSale(transactionRequest, creditCard, "AUTH_CAPTURE");
     return new SaleResult(
-      authorizationResult,
-      new CaptureResult(
-        authorizationResult.getProviderId(),
-        authorizationResult.getCommunicationResult(),
-        authorizationResult.getProviderErrorCode(),
-        authorizationResult.getErrorCode(),
-        authorizationResult.getProviderErrorMessage(),
-        authorizationResult.getProviderUniqueId()
-      )
+        authorizationResult,
+        new CaptureResult(
+            authorizationResult.getProviderId(),
+            authorizationResult.getCommunicationResult(),
+            authorizationResult.getProviderErrorCode(),
+            authorizationResult.getErrorCode(),
+            authorizationResult.getProviderErrorMessage(),
+            authorizationResult.getProviderUniqueId()
+        )
     );
   }
 
@@ -1027,20 +1027,20 @@ public class AuthorizeNet implements MerchantServicesProvider {
 
   @Override
   public void updateCreditCardNumberAndExpiration(
-    CreditCard creditCard,
-    String cardNumber,
-    byte expirationMonth,
-    short expirationYear,
-    String cardCode
+      CreditCard creditCard,
+      String cardNumber,
+      byte expirationMonth,
+      short expirationYear,
+      String cardCode
   ) throws UnsupportedOperationException {
     throw new UnsupportedOperationException();
   }
 
   @Override
   public void updateCreditCardExpiration(
-    CreditCard creditCard,
-    byte expirationMonth,
-    short expirationYear
+      CreditCard creditCard,
+      byte expirationMonth,
+      short expirationYear
   ) throws UnsupportedOperationException {
     throw new UnsupportedOperationException();
   }
