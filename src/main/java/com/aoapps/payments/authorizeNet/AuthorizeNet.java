@@ -446,7 +446,7 @@ public class AuthorizeNet implements MerchantServicesProvider {
       avsResult = AuthorizationResult.AvsResult.UNKNOWN;
     }
 
-    if (responseCode.equals("1")) {
+    if ("1".equals(responseCode)) {
       // Approved
       return new AuthorizationResult(
           getProviderId(),
@@ -469,7 +469,7 @@ public class AuthorizeNet implements MerchantServicesProvider {
           authorizationCode
       );
     } else if (
-        responseCode.equals("2")
+        "2".equals(responseCode)
             // The following codes will be treated as an error
             && !"28".equals(responseReasonCode)
             && !"30".equals(responseReasonCode)
@@ -570,7 +570,7 @@ public class AuthorizeNet implements MerchantServicesProvider {
           avsResult,
           authorizationCode
       );
-    } else if (responseCode.equals("4")) {
+    } else if ("4".equals(responseCode)) {
       // Hold
       AuthorizationResult.ReviewReason reviewReason;
       if ("193".equals(responseReasonCode)) {
