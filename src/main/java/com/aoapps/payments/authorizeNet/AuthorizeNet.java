@@ -54,9 +54,10 @@ import java.util.logging.Logger;
 import org.apache.commons.lang3.NotImplementedException;
 
 /**
- * Provider for the <a href="https://www.authorize.net/">Authorize.Net AIM system</a><br>
- * <br>
+ * Provider for the <a href="https://www.authorize.net/">Authorize.Net AIM system</a>.
+ * <p>
  * Configuration parameters:
+ * </p>
  * <ol>
  *   <li>x_login - The merchant's unique API Login ID</li>
  *   <li>x_tran_key - The merchant's unique Transaction Key</li>
@@ -84,6 +85,9 @@ public class AuthorizeNet implements MerchantServicesProvider {
   private final String x_login;
   private final String x_tran_key;
 
+  /**
+   * Creates a new provider for the <a href="https://www.authorize.net/">Authorize.Net AIM system</a>.
+   */
   public AuthorizeNet(String providerId, String x_login, String x_tran_key) {
     this.providerId = providerId;
     this.x_login = x_login;
@@ -192,66 +196,66 @@ public class AuthorizeNet implements MerchantServicesProvider {
         throw new ErrorCodeException(TransactionResult.ErrorCode.INVALID_CURRENCY_CODE, "TransactionResult.ErrorCode.INVALID_CURRENCY_CODE");
       }
 
-      StringBuilder querySB = new StringBuilder();
+      StringBuilder querySb = new StringBuilder();
       // Merchant Information
-      addField(querySB, "x_login", x_login);
-      addField(querySB, "x_tran_key", x_tran_key);
-      addField(querySB, "x_allow_partial_Auth", "False");
+      addField(querySb, "x_login", x_login);
+      addField(querySb, "x_tran_key", x_tran_key);
+      addField(querySb, "x_allow_partial_Auth", "False");
       // API Information
-      addField(querySB, "x_version", "3.1");
-      addField(querySB, "x_relay_response", "FALSE");
-      addField(querySB, "x_delim_data", "TRUE");
-      querySB.append('&').append(URLEncoder.encode("x_delim_char", ENCODING)).append('=').append(URLEncoder.encode(Character.toString(X_DELIM_CHAR), ENCODING));
-      querySB.append('&').append(URLEncoder.encode("x_encap_char", ENCODING)).append('=').append(URLEncoder.encode(Character.toString(X_ENCAP_CHAR), ENCODING));
+      addField(querySb, "x_version", "3.1");
+      addField(querySb, "x_relay_response", "FALSE");
+      addField(querySb, "x_delim_data", "TRUE");
+      querySb.append('&').append(URLEncoder.encode("x_delim_char", ENCODING)).append('=').append(URLEncoder.encode(Character.toString(X_DELIM_CHAR), ENCODING));
+      querySb.append('&').append(URLEncoder.encode("x_encap_char", ENCODING)).append('=').append(URLEncoder.encode(Character.toString(X_ENCAP_CHAR), ENCODING));
       // Transaction Information
-      addField(querySB, "x_type", x_type);
-      addField(querySB, "x_method", "CC");
-      addField(querySB, "x_amount", getAmount(transactionRequest));
-      addField(querySB, "x_card_num", CreditCard.numbersOnly(creditCard.getCardNumber()));
-      addField(querySB, "x_exp_date", creditCard.getExpirationDateMMYY(false));
-      addField(querySB, "x_card_code", creditCard.getCardCode());
+      addField(querySb, "x_type", x_type);
+      addField(querySb, "x_method", "CC");
+      addField(querySb, "x_amount", getAmount(transactionRequest));
+      addField(querySb, "x_card_num", CreditCard.numbersOnly(creditCard.getCardNumber()));
+      addField(querySb, "x_exp_date", creditCard.getExpirationDateMMYY(false));
+      addField(querySb, "x_card_code", creditCard.getCardCode());
       if (transactionRequest.getTestMode()) {
-        addField(querySB, "x_test_request", "TRUE");
+        addField(querySb, "x_test_request", "TRUE");
       }
-      addField(querySB, "x_duplicate_window", transactionRequest.getDuplicateWindow());
-      addField(querySB, "x_invoice_num", transactionRequest.getInvoiceNumber());
-      addField(querySB, "x_description", transactionRequest.getDescription());
+      addField(querySb, "x_duplicate_window", transactionRequest.getDuplicateWindow());
+      addField(querySb, "x_invoice_num", transactionRequest.getInvoiceNumber());
+      addField(querySb, "x_description", transactionRequest.getDescription());
       // Customer Information
-      addField(querySB, "x_first_name", creditCard.getFirstName());
-      addField(querySB, "x_last_name", creditCard.getLastName());
-      addField(querySB, "x_company", creditCard.getCompanyName());
-      addField(querySB, "x_address", getStreetAddress(creditCard.getStreetAddress1(), creditCard.getStreetAddress2()));
-      addField(querySB, "x_city", creditCard.getCity());
-      addField(querySB, "x_state", creditCard.getState());
-      addField(querySB, "x_zip", CreditCard.numbersOnly(creditCard.getPostalCode()));
-      addField(querySB, "x_country", creditCard.getCountryCode());
-      addField(querySB, "x_phone", creditCard.getPhone());
-      addField(querySB, "x_fax", creditCard.getFax());
-      addField(querySB, "x_email", creditCard.getEmail());
-      addField(querySB, "x_email_customer", transactionRequest.getEmailCustomer() ? "TRUE" : "FALSE");
-      addField(querySB, "x_merchant_email", transactionRequest.getMerchantEmail());
-      addField(querySB, "x_cust_id", creditCard.getCustomerId());
-      addField(querySB, "x_customer_ip", transactionRequest.getCustomerIp());
+      addField(querySb, "x_first_name", creditCard.getFirstName());
+      addField(querySb, "x_last_name", creditCard.getLastName());
+      addField(querySb, "x_company", creditCard.getCompanyName());
+      addField(querySb, "x_address", getStreetAddress(creditCard.getStreetAddress1(), creditCard.getStreetAddress2()));
+      addField(querySb, "x_city", creditCard.getCity());
+      addField(querySb, "x_state", creditCard.getState());
+      addField(querySb, "x_zip", CreditCard.numbersOnly(creditCard.getPostalCode()));
+      addField(querySb, "x_country", creditCard.getCountryCode());
+      addField(querySb, "x_phone", creditCard.getPhone());
+      addField(querySb, "x_fax", creditCard.getFax());
+      addField(querySb, "x_email", creditCard.getEmail());
+      addField(querySb, "x_email_customer", transactionRequest.getEmailCustomer() ? "TRUE" : "FALSE");
+      addField(querySb, "x_merchant_email", transactionRequest.getMerchantEmail());
+      addField(querySb, "x_cust_id", creditCard.getCustomerId());
+      addField(querySb, "x_customer_ip", transactionRequest.getCustomerIp());
       // Shipping Information
-      addField(querySB, "x_ship_to_first_name", transactionRequest.getShippingFirstName());
-      addField(querySB, "x_ship_to_last_name", transactionRequest.getShippingLastName());
-      addField(querySB, "x_ship_to_company", transactionRequest.getShippingCompanyName());
-      addField(querySB, "x_ship_to_address", getStreetAddress(transactionRequest.getShippingStreetAddress1(), transactionRequest.getShippingStreetAddress2()));
-      addField(querySB, "x_ship_to_city", transactionRequest.getShippingCity());
-      addField(querySB, "x_ship_to_state", transactionRequest.getShippingState());
-      addField(querySB, "x_ship_to_zip", CreditCard.numbersOnly(transactionRequest.getShippingPostalCode()));
-      addField(querySB, "x_ship_to_country", transactionRequest.getShippingCountryCode());
+      addField(querySb, "x_ship_to_first_name", transactionRequest.getShippingFirstName());
+      addField(querySb, "x_ship_to_last_name", transactionRequest.getShippingLastName());
+      addField(querySb, "x_ship_to_company", transactionRequest.getShippingCompanyName());
+      addField(querySb, "x_ship_to_address", getStreetAddress(transactionRequest.getShippingStreetAddress1(), transactionRequest.getShippingStreetAddress2()));
+      addField(querySb, "x_ship_to_city", transactionRequest.getShippingCity());
+      addField(querySb, "x_ship_to_state", transactionRequest.getShippingState());
+      addField(querySb, "x_ship_to_zip", CreditCard.numbersOnly(transactionRequest.getShippingPostalCode()));
+      addField(querySb, "x_ship_to_country", transactionRequest.getShippingCountryCode());
       // Additional Shipping Information
-      addField(querySB, "x_tax", transactionRequest.getTaxAmount());
-      addField(querySB, "x_freight", transactionRequest.getShippingAmount());
-      addField(querySB, "x_duty", transactionRequest.getDutyAmount());
-      addField(querySB, "x_tax_exempt", transactionRequest.getTaxExempt() ? "TRUE" : "FALSE");
-      addField(querySB, "x_customer_tax_id", creditCard.getCustomerTaxId());
-      addField(querySB, "x_po_num", transactionRequest.getPurchaseOrderNumber());
+      addField(querySb, "x_tax", transactionRequest.getTaxAmount());
+      addField(querySb, "x_freight", transactionRequest.getShippingAmount());
+      addField(querySb, "x_duty", transactionRequest.getDutyAmount());
+      addField(querySb, "x_tax_exempt", transactionRequest.getTaxExempt() ? "TRUE" : "FALSE");
+      addField(querySb, "x_customer_tax_id", creditCard.getCustomerTaxId());
+      addField(querySb, "x_po_num", transactionRequest.getPurchaseOrderNumber());
       // Merchant-defined fields
-      addField(querySB, "order_number", transactionRequest.getOrderNumber());
-      addField(querySB, "card_comments", creditCard.getComments());
-      query = querySB.toString();
+      addField(querySb, "order_number", transactionRequest.getOrderNumber());
+      addField(querySb, "card_comments", creditCard.getComments());
+      query = querySb.toString();
     } catch (ErrorCodeException err) {
       return new AuthorizationResult(
           getProviderId(),
@@ -303,39 +307,40 @@ public class AuthorizeNet implements MerchantServicesProvider {
     try {
       // Perform query
       String responseString;
-      {
-        if (DEBUG_REQUEST) {
-          logger.log(Level.INFO, "Query: {0}", query);
-        }
-        // 2016-06-07: Converting from GET to POST per Authorize.Net requirements
-        //             http://stackoverflow.com/questions/4205980/java-sending-http-parameters-via-post-method-easily
-        byte[] postData = query.getBytes(ENCODING);
-        HttpURLConnection conn = (HttpURLConnection) new URL(PRODUCTION_URL).openConnection();
-        try {
-          conn.setRequestMethod("POST");
-          conn.setDoOutput(true);
-          conn.setDoInput(true);
-          conn.setInstanceFollowRedirects(false);
-          conn.setRequestProperty("content-type", ContentType.X_WWW_FORM_URLENCODED);
-          conn.setRequestProperty("charset", ENCODING.name());
-          conn.setRequestProperty("content-length", Integer.toString(postData.length));
-          conn.setUseCaches(false);
-
-          try ( // Write Request
-            OutputStream out = conn.getOutputStream()) {
-            out.write(postData);
+        {
+          if (DEBUG_REQUEST) {
+            logger.log(Level.INFO, "Query: {0}", query);
           }
+          // 2016-06-07: Converting from GET to POST per Authorize.Net requirements
+          //             http://stackoverflow.com/questions/4205980/java-sending-http-parameters-via-post-method-easily
+          byte[] postData = query.getBytes(ENCODING);
+          HttpURLConnection conn = (HttpURLConnection) new URL(PRODUCTION_URL).openConnection();
+          try {
+            conn.setRequestMethod("POST");
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.setInstanceFollowRedirects(false);
+            conn.setRequestProperty("content-type", ContentType.X_WWW_FORM_URLENCODED);
+            conn.setRequestProperty("charset", ENCODING.name());
+            conn.setRequestProperty("content-length", Integer.toString(postData.length));
+            conn.setUseCaches(false);
 
-          // Read response
-          byte[] responseBytes;
-          try (InputStream in = conn.getInputStream()) {
-            responseBytes = IoUtils.readFully(in);
+            // Write Request
+            try (
+              OutputStream out = conn.getOutputStream()) {
+              out.write(postData);
+            }
+
+            // Read response
+            byte[] responseBytes;
+            try (InputStream in = conn.getInputStream()) {
+              responseBytes = IoUtils.readFully(in);
+            }
+            responseString = new String(responseBytes, ENCODING);
+          } finally {
+            conn.disconnect();
           }
-          responseString = new String(responseBytes, ENCODING);
-        } finally {
-          conn.disconnect();
         }
-      }
 
       // Parse response
       if (DEBUG_RESPONSE) {
@@ -383,15 +388,13 @@ public class AuthorizeNet implements MerchantServicesProvider {
 
     // Get the values from the response
     // Note: The docs are 1-based and arrays are 0-based, so these are all off by one
-    final String
-        responseCode       = response.get(0),
-        responseReasonCode = response.get(2),
-        responseReasonText = response.get(3),
-        authorizationCode  = response.get(4),
-        avsResponse        = response.get(5),
-        transactionId      = response.get(6),
-        cardCodeResponse   = response.get(38)
-    ;
+    final String responseCode       = response.get(0);
+    final String responseReasonCode = response.get(2);
+    final String responseReasonText = response.get(3);
+    final String authorizationCode  = response.get(4);
+    final String avsResponse        = response.get(5);
+    final String transactionId      = response.get(6);
+    final String cardCodeResponse   = response.get(38);
 
     // Convert to CvvResult
     AuthorizationResult.CvvResult cvvResult;
@@ -1056,7 +1059,12 @@ public class AuthorizeNet implements MerchantServicesProvider {
   }
 
   @Override
-  public Map<String, TokenizedCreditCard> getTokenizedCreditCards(Map<String, CreditCard> persistedCards, PrintWriter verboseOut, PrintWriter infoOut, PrintWriter warningOut) throws UnsupportedOperationException {
+  public Map<String, TokenizedCreditCard> getTokenizedCreditCards(
+      Map<String, CreditCard> persistedCards,
+      PrintWriter verboseOut,
+      PrintWriter infoOut,
+      PrintWriter warningOut
+  ) throws UnsupportedOperationException {
     throw new UnsupportedOperationException();
   }
 }
