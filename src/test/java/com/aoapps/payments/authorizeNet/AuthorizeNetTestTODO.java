@@ -1,6 +1,6 @@
 /*
  * ao-payments-authorizeNet - Provider for the Authorize.Net AIM system.
- * Copyright (C) 2010, 2011, 2012, 2013, 2016, 2019, 2020, 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2010, 2011, 2012, 2013, 2016, 2019, 2020, 2021, 2022, 2023  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -23,6 +23,7 @@
 
 package com.aoapps.payments.authorizeNet;
 
+import com.aoapps.lang.security.acl.Group;
 import com.aoapps.lang.util.PropertiesUtils;
 import com.aoapps.payments.AuthorizationResult;
 import com.aoapps.payments.CreditCard;
@@ -35,7 +36,6 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.InetAddress;
 import java.security.Principal;
-import java.security.acl.Group;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Currency;
