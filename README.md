@@ -22,7 +22,7 @@ Provider for the [Authorize.Net AIM system](https://www.authorize.net/).
 * [Project Home](https://oss.aoapps.com/payments/authorizeNet/)
 * [Changelog](https://oss.aoapps.com/payments/authorizeNet/changelog)
 * [API Docs](https://oss.aoapps.com/payments/authorizeNet/apidocs/)
-* [Maven Central Repository](https://search.maven.org/artifact/com.aoapps/ao-payments-authorizeNet)
+* [Maven Central Repository](https://central.sonatype.com/search?namespace=com.aoapps&q=a%3Aao-payments-authorizeNet)
 * [GitHub](https://github.com/ao-apps/ao-payments-authorizeNet)
 
 ## Contact Us
