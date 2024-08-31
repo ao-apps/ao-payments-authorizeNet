@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 ao-payments-authorizeNet - Provider for the Authorize.Net AIM system.
-Copyright (C) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023  AO Industries, Inc.
+Copyright (C) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -37,7 +37,7 @@ along with ao-payments-authorizeNet.  If not, see <https://www.gnu.org/licenses/
     shortTitle="Changelog"
     tocLevels="1"
     datePublished="2016-10-29T18:16:34-05:00"
-    dateModified="2021-07-21T04:15:55-05:00"
+    dateModified="2024-08-31T19:37:53Z"
   >
     <c:set var="latestRelease" value="2.0.0" />
     <c:if test="${
@@ -54,6 +54,7 @@ along with ao-payments-authorizeNet.  If not, see <https://www.gnu.org/licenses/
         scmUrl="@{project.scm.url}"
       >
         <ul>
+          <li>Updated to <ao:a href="https://checkstyle.org/releasenotes.html#Release_10.18.1">Checkstyle 10.18.1</ao:a>.</li>
           <!-- TODO: Future:
           <li>
             TODO: Changed implementation from <ao:a href="https://support.authorize.net/s/article/Advanced-Integration-Method-AIM">Advanced Integration Method (AIM)</ao:a>
