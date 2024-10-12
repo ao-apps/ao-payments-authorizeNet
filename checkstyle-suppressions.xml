@@ -39,6 +39,10 @@ along with ao-payments-authorizeNet.  If not, see <https://www.gnu.org/licenses/
     files="[/\\]com[/\\]aoapps[/\\]payments[/\\]authorizeNet[/\\]AuthorizeNetTestTODO\.java$"
     message="'AuthorizeNetTestTODO'"
   />
+  <suppress
+    checks="MissingJavadocMethod"
+    files="[/\\]com[/\\]aoapps[/\\]payments[/\\]authorizeNet[/\\]AuthorizeNetTestTODO\.java$"
+  />
 
   <!-- Will keep the names matching the Authorize.Net documentation for clarity -->
   <suppress
