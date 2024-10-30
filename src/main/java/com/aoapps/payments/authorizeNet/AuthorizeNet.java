@@ -1,6 +1,6 @@
 /*
  * ao-payments-authorizeNet - Provider for the Authorize.Net AIM system.
- * Copyright (C) 2010, 2011, 2012, 2013, 2015, 2016, 2018, 2019, 2020, 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2010, 2011, 2012, 2013, 2015, 2016, 2018, 2019, 2020, 2021, 2022, 2024  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -55,9 +55,9 @@ import org.apache.commons.lang3.NotImplementedException;
 
 /**
  * Provider for the <a href="https://www.authorize.net/">Authorize.Net AIM system</a>.
- * <p>
- * Configuration parameters:
- * </p>
+ *
+ * <p>Configuration parameters:</p>
+ *
  * <ol>
  *   <li>x_login - The merchant's unique API Login ID</li>
  *   <li>x_tran_key - The merchant's unique Transaction Key</li>
