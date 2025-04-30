@@ -1,6 +1,6 @@
 /*
  * ao-payments-authorizeNet - Provider for the Authorize.Net AIM system.
- * Copyright (C) 2010, 2011, 2012, 2013, 2015, 2016, 2018, 2019, 2020, 2021, 2022, 2024  AO Industries, Inc.
+ * Copyright (C) 2010, 2011, 2012, 2013, 2015, 2016, 2018, 2019, 2020, 2021, 2022, 2024, 2025  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -307,40 +307,39 @@ public class AuthorizeNet implements MerchantServicesProvider {
     try {
       // Perform query
       String responseString;
-        {
-          if (DEBUG_REQUEST) {
-            logger.log(Level.INFO, "Query: {0}", query);
-          }
-          // 2016-06-07: Converting from GET to POST per Authorize.Net requirements
-          //             http://stackoverflow.com/questions/4205980/java-sending-http-parameters-via-post-method-easily
-          byte[] postData = query.getBytes(ENCODING);
-          HttpURLConnection conn = (HttpURLConnection) new URL(PRODUCTION_URL).openConnection();
-          try {
-            conn.setRequestMethod("POST");
-            conn.setDoOutput(true);
-            conn.setDoInput(true);
-            conn.setInstanceFollowRedirects(false);
-            conn.setRequestProperty("content-type", ContentType.X_WWW_FORM_URLENCODED);
-            conn.setRequestProperty("charset", ENCODING.name());
-            conn.setRequestProperty("content-length", Integer.toString(postData.length));
-            conn.setUseCaches(false);
-
-            // Write Request
-            try (
-              OutputStream out = conn.getOutputStream()) {
-              out.write(postData);
-            }
-
-            // Read response
-            byte[] responseBytes;
-            try (InputStream in = conn.getInputStream()) {
-              responseBytes = IoUtils.readFully(in);
-            }
-            responseString = new String(responseBytes, ENCODING);
-          } finally {
-            conn.disconnect();
-          }
+      {
+        if (DEBUG_REQUEST) {
+          logger.log(Level.INFO, "Query: {0}", query);
         }
+        // 2016-06-07: Converting from GET to POST per Authorize.Net requirements
+        //             http://stackoverflow.com/questions/4205980/java-sending-http-parameters-via-post-method-easily
+        byte[] postData = query.getBytes(ENCODING);
+        HttpURLConnection conn = (HttpURLConnection) new URL(PRODUCTION_URL).openConnection();
+        try {
+          conn.setRequestMethod("POST");
+          conn.setDoOutput(true);
+          conn.setDoInput(true);
+          conn.setInstanceFollowRedirects(false);
+          conn.setRequestProperty("content-type", ContentType.X_WWW_FORM_URLENCODED);
+          conn.setRequestProperty("charset", ENCODING.name());
+          conn.setRequestProperty("content-length", Integer.toString(postData.length));
+          conn.setUseCaches(false);
+
+          // Write Request
+          try (OutputStream out = conn.getOutputStream()) {
+            out.write(postData);
+          }
+
+          // Read response
+          byte[] responseBytes;
+          try (InputStream in = conn.getInputStream()) {
+            responseBytes = IoUtils.readFully(in);
+          }
+          responseString = new String(responseBytes, ENCODING);
+        } finally {
+          conn.disconnect();
+        }
+      }
 
       // Parse response
       if (DEBUG_RESPONSE) {
