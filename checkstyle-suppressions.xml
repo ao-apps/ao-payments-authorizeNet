@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 ao-payments-authorizeNet - Provider for the Authorize.Net AIM system.
-Copyright (C) 2022, 2024  AO Industries, Inc.
+Copyright (C) 2022, 2024, 2026  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -46,7 +46,7 @@ along with ao-payments-authorizeNet.  If not, see <https://www.gnu.org/licenses/
 
   <!-- Will keep the names matching the Authorize.Net documentation for clarity -->
   <suppress
-    checks="(MemberName|ParameterName)"
+    checks="(GoogleNonConstantFieldName|ParameterName)"
     files="[/\\]com[/\\]aoapps[/\\]payments[/\\]authorizeNet[/\\]AuthorizeNet\.java$"
     message="'(x_login|x_tran_key|x_type)'"
   />
