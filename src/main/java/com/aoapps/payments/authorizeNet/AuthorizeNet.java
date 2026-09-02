@@ -1,6 +1,6 @@
 /*
  * ao-payments-authorizeNet - Provider for the Authorize.Net AIM system.
- * Copyright (C) 2010, 2011, 2012, 2013, 2015, 2016, 2018, 2019, 2020, 2021, 2022, 2024, 2025  AO Industries, Inc.
+ * Copyright (C) 2010, 2011, 2012, 2013, 2015, 2016, 2018, 2019, 2020, 2021, 2022, 2024, 2025, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -387,13 +387,13 @@ public class AuthorizeNet implements MerchantServicesProvider {
 
     // Get the values from the response
     // Note: The docs are 1-based and arrays are 0-based, so these are all off by one
-    final String responseCode       = response.get(0);
+    final String responseCode = response.get(0);
     final String responseReasonCode = response.get(2);
     final String responseReasonText = response.get(3);
-    final String authorizationCode  = response.get(4);
-    final String avsResponse        = response.get(5);
-    final String transactionId      = response.get(6);
-    final String cardCodeResponse   = response.get(38);
+    final String authorizationCode = response.get(4);
+    final String avsResponse = response.get(5);
+    final String transactionId = response.get(6);
+    final String cardCodeResponse = response.get(38);
 
     // Convert to CvvResult
     AuthorizationResult.CvvResult cvvResult;
